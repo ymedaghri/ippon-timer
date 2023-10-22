@@ -1,8 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# IPPON Timer
+Ce projet est une application Next.js qui affiche un timer qui se décrémente chaque seconde.
 
-## Getting Started
+![Timer App](https://raw.githubusercontent.com/ymedaghri/ippon-timer/main/read_me_image_timer_app.png)
 
-First, run the development server:
+## Démarrage
+
+D'abord, lançez le serveur de développement :
 
 ```bash
 npm run dev
@@ -14,23 +17,35 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Il est possible de spécifier le nombre initial de secondes, minutes et heures via la query string par exemple : 
+http://localhost:3000?hours=1&minutes=20&seconds=30
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Vous pouvez n'indiquer que certains de ces paramètre ou bien aucun de ces paramètres, dans ce dernier cas le Timer sera configuré à 10 minutes
 
-## Learn More
+## 🌟 Fonctionnalités
+- 🕒 Affichage d'un timer qui se décrémente chaque seconde.
+- 📌 Possibilité de spécifier seconds, minutes, et hours via la query string.
+- 📌 L'état est stocké en localStorage durant la durée de vie du timer, ainsi même si la fenêtre est fermée, l'ouverture de la même url (avec paramètres identiques) continurea le timer précédent
+- 📌 Tout changement de paramètres (minutes, seconde, heures) créera un nouveau timer et mettra à jour le localStorage avec ce dernier
+- 🚀 Préparé pour un déploiement sur fly.io.
+- 🚀 Démarrage rapide
 
-To learn more about Next.js, take a look at the following resources:
+
+## 🌍 Déploiement sur fly.io
+
+```bash
+fly deploy
+```
+Vous pouvez accéder à la version en ligne de l'application ici : https://ippon-timer.fly.dev/?minutes=5
+
+## Développé avec NextJS
+
+Pour en savoir plus sur Next.js, jetez un oeil sur les ressources suivantes :
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contactez moi pour plus de détails
+[Ymedaghri@gmail.com](mailto:Ymedaghri@gmail.com)

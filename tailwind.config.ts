@@ -13,6 +13,20 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        'ippon-blue': '#043cdc',
+        'ippon-dark-blue': '#022591'
+
+      },
+      keyframes: {
+        tilt: {
+          '50%': { transform: 'rotate(-1deg)' },
+          '100%': { transform: 'rotate(1deg)' },
+        }
+      },
+      animation: {
+        tilt: 'tilt 0.1s 30',
+      }
     },
   },
   plugins: [],
