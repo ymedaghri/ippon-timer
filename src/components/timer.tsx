@@ -31,7 +31,6 @@ const Timer = ({ time }: { time: number }) => {
         return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
     /*
-      
         bg-black bg-opacity-20 
         font-mono border rounded-full p-4 sm:p-6 md:p-8 
     */

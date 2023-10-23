@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
       className="bg-black flex items-center justify-center h-screen bg-cover bg-center"
       style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
     >
-      <SvgIcon className={`absolute top-4 left-4 w-60 h-auto ${logoClassName}`} />
+      <SvgIcon className={`absolute top-4 left-4 w-16 md:w-32 lg:w-60 h-auto ${logoClassName}`} />
       {(duration != null) && <Timer time={duration} />}
     </div>
   );
