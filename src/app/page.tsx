@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
     }
 
     timer = JSON.parse(ipponTimer)
-    setDuration(restDuration(timer.startDate, timer.duration))
+    setDuration(remaintingTime(timer.startDate, timer.duration))
     setBgImage(timer.bgImage)
     setLogoClassName(timer.logoClassName)
   }, []);
@@ -52,8 +52,8 @@ const HomePage: React.FC = () => {
       className="bg-black flex items-center justify-center h-screen bg-cover bg-center"
       style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
     >
-      <SvgIcon className={`absolute top-4 left-4 w-16 md:w-32 lg:w-60 h-auto ${logoClassName}`} />
-      {(duration != null) && <Timer time={duration} />}
+      <SvgIcon className={`absolute top-4 left-4 w-16 md:w-32 lg:w-60 h-auto ${logoClassName}`} />    
+      {(duration != null) && <Timer initialTime={duration} />}
     </div>
   );
 }
@@ -70,13 +70,13 @@ function isStartDatePassed(startDateStr: string, durationInSeconds: number): boo
   return currentDate > endDate;
 }
 
-function restDuration(startDateStr: string, durationInSeconds: number): number {
+function remaintingTime(startDateStr: string, durationInSeconds: number): number {
   const startDate = new Date(startDateStr)
   const endDate = new Date(startDate.getTime() + durationInSeconds * 1000)
   const now = new Date();
-  const restDurationMillis = endDate.getTime() - now.getTime();
-  const restDuration = restDurationMillis / 1000;
-  return Math.trunc(restDuration)
+  const remainingTimeInMillis = endDate.getTime() - now.getTime();
+  const remainingTime = remainingTimeInMillis / 1000;
+  return Math.trunc(remainingTime)
 }
 
 export default HomePage;

@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for ippon-timer on 2023-10-21T23:56:02+02:00
+# fly.toml app configuration file generated for ippon-timer on 2024-03-29T19:31:59+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "ippon-timer"
-primary_region = "cdg"
+app = 'ippon-timer'
+primary_region = 'cdg'
 
 [build]
 
@@ -14,4 +14,9 @@ primary_region = "cdg"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

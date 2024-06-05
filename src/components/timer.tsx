@@ -2,26 +2,41 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const Timer = ({ time }: { time: number }) => {
-    const [timeLeft, setTimeLeft] = useState<number>(time);
+const Timer = ({ initialTime }: { initialTime: number }) => {
+    const [timeLeft, setTimeLeft] = useState<number>(initialTime);
     const [isSoundOn, setIsSoundOn] = useState(false);
     const audioRef = useRef<HTMLAudioElement>(null)
+    const intervalIdRef = useRef<NodeJS.Timeout | null>(null);
+    const endTimeRef = useRef(Date.now() + initialTime * 1000);
 
     useEffect(() => {
-        if (timeLeft <= 0) {
+    
+        const updateTimer = () => {
+          const now = Date.now();
+          const timeRemaining = Math.max(0, Math.floor((endTimeRef.current - now) / 1000));
+          setTimeLeft(timeRemaining);
+    
+          if (timeRemaining <= 0) {
+            if (intervalIdRef.current) {
+                clearInterval(intervalIdRef.current);
+            }
             if (isSoundOn && audioRef.current) {
                 audioRef.current.play()
+            }            
+          }          
+        };
+    
+        intervalIdRef.current = setInterval(updateTimer, 1000);
+    
+        updateTimer();
+    
+        return () => {
+            if (intervalIdRef.current) {
+              clearInterval(intervalIdRef.current);
             }
-            setIsSoundOn(true)
-            return
-        }
+          };
+      }, [isSoundOn]);
 
-        const intervalId = setInterval(() => {
-            setTimeLeft(timeLeft - 1);
-        }, 1000);
-
-        return () => clearInterval(intervalId);
-    }, [timeLeft]);
 
     const formatTime = (time: number) => {
         const hrs = Math.floor(time / 3600);
